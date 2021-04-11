@@ -16,7 +16,7 @@ int main()
     int flagNumero1=0;//flags para validar que se ingresen los datos en el orden correcto
     int flagNumero2=0;
     int flagCalcular=0;
-    char salir;
+    char salir;//variable de control de confirmacion de salida.
     char seguir;//variable de control del bucle
 
     seguir='s';//mientras sea =='s' vuelve al bucle, cuando sea !='s' sale.
@@ -121,8 +121,11 @@ int main()
                 {
                     printf("No se puede realizar el factorial de numeros negativos.\n\n");
                 }
-            numero1=0;//cuando mostro los resultados se reinician los valores de los parametros.
+            numero1=0;//cuando muestro los resultados se reinician los valores de los parametros.
             numero2=0;
+            flagCalcular=0;//reinicio la bandera de calcular asi puedo ingresar nuevos parametros.
+            flagNumero1=0;//reinicio bandera de numeros una vez que muestro el resultado asi si ingresan nuevamente opcion 3) no vuelvo a calcular lo ya calculado. (cuando ingresen nuevos parametros voy a poder calcular nuevamente).
+            flagNumero2=0;
             }
             else//si la bandera calcular esta baja le pido al usuario los pasos correctos del flujo del programa.
             {
