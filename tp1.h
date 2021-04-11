@@ -52,3 +52,11 @@ float multiplicacionTp1(float a, float b);
 long int factorialTp1(float);
 
 
+/** \brief Presenta el menu de opciones a escoger.
+ *
+ * \param float Primer parametro ingresado por el usuario a mostrar en pantalla.
+ * \param float Segundo parametro ingresado por el usuario a mostrar en pantalla.
+ * \return int Opcion elegida.
+ *
+ */
+int menuDeOpciones(float, float);

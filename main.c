@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdio.h>         //Estanguet Pablo; Div: 1G; TP1, Calculadora.
 #include <stdlib.h>
 #include <ctype.h>
 #include "tp1.h"//en el main solo se carga el archivo.h
@@ -13,13 +13,9 @@ int main()
     float multiplicacion;
     long int factorialA;
     long int factorialB;
-
     int flagNumero1=0;//flags para validar que se ingresen los datos en el orden correcto
     int flagNumero2=0;
     int flagCalcular=0;
-
-    int opcion;//variable donde se guarda la opcion elegida
-
     char salir;
     char seguir;//variable de control del bucle
 
@@ -27,37 +23,41 @@ int main()
 
     do
     {
-        system("cls");//limpia la pantalla despues de elegir la opcion, despues del switch.
-        printf("***Menu Calculadora***\n\n");
-        printf("1)Ingresar 1er operando (A=%.2f)\n", numero1);//asi me cambia el valor de x cuando el usuario ingresa el dato
-        printf("2)Ingresar 2do operando (B=%.2f)\n", numero2);
-        printf("3)Calcular todas las operaciones\n");
-        printf("    a) Calcular la suma (A+B)\n");
-        printf("    b) Calcular la resta (A-B)\n");
-        printf("    c) Calcular la division (A/B)\n");
-        printf("    d) Calcular la multiplicacion (A*B)\n");
-        printf("    e) Calcular el factorial (A!)\n\n");
-        printf("4)Informar resultados\n");
-        printf("5)Salir\n");
-
-        printf("Ingresar opcion: ");//pido dato de opcion al usuario
-        scanf("%d", &opcion);//guardo dato de opcion en la direccion de memoria
-
-        switch(opcion)//acciones a seguir segun opcion elegida
+        switch(menuDeOpciones(numero1,numero2))//acciones a seguir segun opcion elegida, le paso a funcion menu los operandos a mostras en pantalla.
         {
         case 1:
-            system("cls");//limpio pantalla de menu y dejo solamente a la vista ingresar el dato
-            printf("Escogio opcion 1)\n");
-            printf("Por favor ingrese 1er operando: ");//entrada 1er dato por el usuario
-            scanf("%f", &numero1);//guardo dato en direccion de memoria
-            flagNumero1=1;
+            if(flagCalcular==0)
+            {
+                system("cls");//limpio pantalla de menu y dejo solamente a la vista ingresar el dato
+                printf("Escogio opcion 1)\n");
+                printf("Por favor ingrese 1er operando: ");//entrada 1er dato por el usuario
+                scanf("%f", &numero1);//guardo dato en direccion de memoria
+                flagNumero1=1;
+            }
+            else
+            {
+                system("cls");
+                printf("Ya realizo el calculo de dos operandos, para concluir con esta operacion muestre resultados en opcion 4),\n y luego si lo desea ingrese nuevos parametros\n");
+                system("pause");
+            }
+
             break;
         case 2:
-            system("cls");
-            printf("Escogio opcion 2)\n");
-            printf("Por favor ingrese 2do operando: ");//entrada 2do dato por el usuario
-            scanf("%f", &numero2);//guardo dato en direccion de memoria
-            flagNumero2=1;
+            if(flagCalcular==0)
+            {
+                system("cls");
+                printf("Escogio opcion 2)\n");
+                printf("Por favor ingrese 2do operando: ");//entrada 2do dato por el usuario
+                scanf("%f", &numero2);//guardo dato en direccion de memoria
+                flagNumero2=1;
+            }
+            else
+            {
+                system("cls");
+                printf("Ya realizo el calculo de dos operandos, para concluir con esta operacion muestre resultados en opcion 4),\n y luego si lo desea ingrese nuevos parametros\n");
+                system("pause");
+            }
+
             break;
         case 3:
             if(flagNumero1==1 && flagNumero2==1)//valido si las banderas de num1 y num2 estan levantadas para entrar y hacer las operaciones.
@@ -70,7 +70,7 @@ int main()
                     division=divisionTp1(numero1,numero2);//llamada a funcion divisionTp1
                 }
                 multiplicacion=multiplicacionTp1(numero1,numero2);//llamada a funcion multiplicacioTp1
-                printf("Las operaciones fueron calculadas.\nIngrese enter y luego opcion 4 para mostrar resultados.\n");
+                printf("Las operaciones fueron calculadas.\nIngrese opcion 4) para mostrar resultados.\n\n");
                 if(numero1>=0)//valido asi si es negativo el numero, que ni se gaste en hacer el factorial.
                 {
                     factorialA=factorialTp1(numero1);//llamada a funcion factorialTp1
@@ -84,10 +84,10 @@ int main()
             else
             {
                 system("cls");
-                printf("No se pueden hacer calculos antes de ingresar los dos operandos.\nPor favor ingrese los datos en las opciones 1) y 2)\n");
+                printf("No se pueden hacer calculos antes de ingresar los dos operandos.\nPor favor ingrese los datos en las opciones 1) y 2)\n\n");
             }
 
-            getch();//hace una pausa esperando el enter para seguir con el flujo. tambien podria usar system("pause");
+            system("pause");//hace una pausa esperando el enter para seguir con el flujo.
             break;
         case 4:
             if(flagCalcular==1)//valido si la bandera de 3)calcular esta levantada para poder mostrar los resultados.
@@ -110,24 +110,26 @@ int main()
                 }
                 else//si es negativo que informe al usuario que no se pudo hacer la operacion
                 {
-                    printf("No se puede realizar el factorial de numeros negativos.\n");
+                    printf("No se puede realizar el factorial de numeros negativos.\n\n");
                 }
 
                 if(numero2>=0)
                 {
-                    printf("El resultado del factorial de B es: %ld\n", factorialB);
+                    printf("El resultado del factorial de B es: %ld\n\n", factorialB);
                 }
                 else
                 {
-                    printf("No se puede realizar el factorial de numeros negativos.\n");
+                    printf("No se puede realizar el factorial de numeros negativos.\n\n");
                 }
+            numero1=0;//cuando mostro los resultados se reinician los valores de los parametros.
+            numero2=0;
             }
             else//si la bandera calcular esta baja le pido al usuario los pasos correctos del flujo del programa.
             {
                 system("cls");
-                printf("No hay resultados para mostrar.\nPor favor primero calcule las operaciones en la opcion 3)\n");
+                printf("No hay resultados para mostrar.\nPor favor primero calcule las operaciones en la opcion 3)\n\n");
             }
-            getch();
+            system("pause");
             break;
         case 5:
             printf("Esta seguro que desea salir?\n(Ingrese: s para SALIR / cualquier otra tecla para CANCELAR)\n");
@@ -145,8 +147,6 @@ int main()
 
     return 0;
 }
-
-
 
 /*Enunciado.
 Hacer una calculadora. Para ello el programa iniciará y contará con un menú de opciones:
