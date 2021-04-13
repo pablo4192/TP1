@@ -75,7 +75,7 @@ int main()
                 {
                     factorialA=factorialTp1(numero1);//llamada a funcion factorialTp1
                 }
-                if(numero2)
+                if(numero2>=0)
                 {
                     factorialB=factorialTp1(numero2);//llamada a funcion factorialTp1
                 }
@@ -150,6 +150,7 @@ int main()
 
     return 0;
 }
+
 
 /*Enunciado.
 Hacer una calculadora. Para ello el programa iniciará y contará con un menú de opciones:

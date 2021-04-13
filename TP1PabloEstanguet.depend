@@ -1,11 +1,11 @@
 # depslib dependency file v1.0
-1618099070 source:c:\users\kiano\desktop\tp1pabloestanguet\tp1.c
+1618345682 source:c:\users\kiano\desktop\tp1pabloestanguet\tp1.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
 	"tp1.h"
 
-1618169917 source:c:\users\kiano\desktop\tp1pabloestanguet\main.c
+1618345180 source:c:\users\kiano\desktop\tp1pabloestanguet\main.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
@@ -17,5 +17,5 @@
 	<ctype.h>
 	"tp1.h"
 
-1618099070 c:\users\kiano\desktop\tp1pabloestanguet\tp1.h
+1618345652 c:\users\kiano\desktop\tp1pabloestanguet\tp1.h
 

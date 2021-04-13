@@ -60,3 +60,5 @@ long int factorialTp1(float);
  *
  */
 int menuDeOpciones(float, float);
+
+
